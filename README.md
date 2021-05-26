@@ -1,5 +1,5 @@
 # Sierpinski Triangle
-## _A simple implementation of Sierpinski's triangle in Python and turtle_
+## _A simple implementation of Sierpinski's triangle in Python and the turtle module with random figure generation_
 
 ![N|Solid](https://raw.githubusercontent.com/di2mot/Sierpinski-Triangle/main/Sierpi%C5%84ski_triangle.png)
 
