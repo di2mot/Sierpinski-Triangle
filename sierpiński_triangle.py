@@ -14,6 +14,8 @@ C = (randint(100, 350), randint(-350, 100))
 
 COORDINATE = (A, B, C)
 
+COORD = []
+
 # KOEF  = 1/1 as 1, or you can use like 1/2 as 0.5
 KOEF = Fraction(1, 1)
 
@@ -30,14 +32,33 @@ ITERATION = 2000
 t = turtle.Turtle()
 t.speed(SPEED)
 t.up()  # In order not to leave a mark
+t.ht()
+canvas = turtle.getcanvas()
 
-def make_points(t):
+def make_points_random(t):
 
     for POINT in COORDINATE:
         t.goto(POINT)
         t.dot(5, 'red')
     t.goto(TEMP_COORD)
     t.dot(5, 'yellow')
+
+
+def make_points(t):
+
+    while len(COORD) < 5:
+        turtle.onscreenclick(clic)
+        t.home()
+
+    t.goto(TEMP_COORD)
+    t.dot(5, 'yellow')
+
+def clic(x, y):
+    COORD.append([x, y])
+    print(x, y)
+    t.up()
+    t.goto(x, y)
+    t.dot(10, 'red')
 
 
 def add_point(t, TEMP_COORD):
@@ -48,7 +69,10 @@ def add_point(t, TEMP_COORD):
     TEMP = TEMP_COORD
     for i in range(2000):
 
-        ABC = choice(COORDINATE)
+        if len(COORD) != 0:
+            ABC =  choice(COORD)
+        else:
+            ABC = choice(COORDINATE)
 
         NEW_X = (TEMP[0] + KOEF * ABC[0]) / (1 + KOEF)
         NEW_Y = (TEMP[1] + KOEF * ABC[1]) / (1 + KOEF)
@@ -57,6 +81,7 @@ def add_point(t, TEMP_COORD):
 
         t.goto(NEW_X, NEW_Y)
         t.dot(3)
+        turtle.title(f'number of points = {i}')
 
 
 def run(t, TEMP_COORD):
