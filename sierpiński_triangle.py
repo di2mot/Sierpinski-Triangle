@@ -12,6 +12,7 @@ B = (randint(-350, 100), randint(-350, 100))
 
 C = (randint(100, 350), randint(-350, 100))
 
+# If you write the coordinates manually, add them to this list
 COORDINATE = (A, B, C)
 
 COORD = []
@@ -37,6 +38,7 @@ canvas = turtle.getcanvas()
 
 def make_points_random(t):
 
+    #To set points random
     for POINT in COORDINATE:
         t.goto(POINT)
         t.dot(5, 'red')
@@ -46,6 +48,7 @@ def make_points_random(t):
 
 def make_points(t):
 
+    #To set points manually
     while len(COORD) < 5:
         turtle.onscreenclick(clic)
         t.home()
@@ -55,7 +58,6 @@ def make_points(t):
 
 def clic(x, y):
     COORD.append([x, y])
-    print(x, y)
     t.up()
     t.goto(x, y)
     t.dot(10, 'red')
@@ -63,14 +65,18 @@ def clic(x, y):
 
 def add_point(t, TEMP_COORD):
     '''
+    Sets a new point between the old point and a random vertex of the triangle.
+
     Xm = Xa + k*Xb / 1 + k
     Ym = Ya + k*Xb / 1 + k
     '''
     TEMP = TEMP_COORD
     for i in range(2000):
 
+        # If the COORD list is empty, it will select COORDINATE
         if len(COORD) != 0:
-            ABC =  choice(COORD)
+            ABC = choice(COORD)
+
         else:
             ABC = choice(COORDINATE)
 
@@ -81,10 +87,16 @@ def add_point(t, TEMP_COORD):
 
         t.goto(NEW_X, NEW_Y)
         t.dot(3)
+
+        # Updates the point counter in the header
         turtle.title(f'number of points = {i}')
 
 
 def run(t, TEMP_COORD):
+    '''
+    Function for starting 
+    '''
+
     make_points(t)
     add_point(t, TEMP_COORD)
 
