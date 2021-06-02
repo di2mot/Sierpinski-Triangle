@@ -2,6 +2,13 @@ import turtle
 from random import choice, randint
 from fractions import Fraction
 
+
+# If you need to randomly place points
+RANDOM = True
+
+# the number of points that click on the screen
+QUANTITY = 5
+
 # CONSTANTS:
 
 # A = (x, y)
@@ -49,7 +56,7 @@ def make_points_random(t):
 def make_points(t):
 
     #To set points manually
-    while len(COORD) < 5:
+    while len(COORD) < QUANTITY:
         turtle.onscreenclick(clic)
         t.home()
 
@@ -96,8 +103,10 @@ def run(t, TEMP_COORD):
     '''
     Function for starting 
     '''
-
-    make_points(t)
+    if RANDOM:
+        make_points_random(t)
+    else:
+        make_points(t)
     add_point(t, TEMP_COORD)
 
     # click to exit
