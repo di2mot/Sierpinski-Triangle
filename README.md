@@ -11,7 +11,7 @@ How to use:
 Two input options are supported, actually three. In the first case, if the RANDOM variable = True, the points will be set automatically.
 If you want to set it manually, you can either write it in the script body, indicate coordinates of points and add new points if necessary. 
 Or just click on the screen. Where you click, there will be points. To do this you need to set RANDOM = False.
-To set the number of entered points, change the QUANTITY variable
+To set the number of entered points, change the QUANTITY variable.
 
 ## License
 
