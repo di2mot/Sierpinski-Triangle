@@ -101,7 +101,7 @@ def add_point(t, TEMP_COORD):
 
 def run(t, TEMP_COORD):
     '''
-    Function for starting 
+    Function for starting script
     '''
     if RANDOM:
         make_points_random(t)
