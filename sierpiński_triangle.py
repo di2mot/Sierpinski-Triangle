@@ -1,7 +1,5 @@
 import turtle
 from random import choice, randint
-from fractions import Fraction
-
 
 
 # CONSTANTS:
@@ -19,21 +17,13 @@ COORDINATE = (A, B, C)
 
 COORD = []
 
-# KOEF  = 1/1 as 1, or you can use like 1/2 as 0.5
-KOEF = Fraction(1, 1)
-
 # first point
 TEMP_COORD = [randint(0, 200), randint(0, 200)]
 
-# speed of turtle
-SPEED = 100
-
-# number of iterations
-ITERATION = 2000
 
 # Main script
 t = turtle.Turtle()
-t.speed(SPEED)
+
 t.up()  # In order not to leave a mark
 t.ht()
 canvas = turtle.getcanvas()
@@ -65,7 +55,7 @@ def clic(x, y):
     t.dot(10, 'red')
 
 
-def add_point(t, TEMP_COORD):
+def add_point(t, TEMP_COORD, KOEF):
     '''
     Sets a new point between the old point and a random vertex of the triangle.
 
@@ -94,18 +84,24 @@ def add_point(t, TEMP_COORD):
         turtle.title(f'number of points = {i}')
 
 
-def run(t, TEMP_COORD, RANDOM=True, QUANTITY=3):
+def run(t, TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, SPEED=100):
     '''
     Function for starting script
+
     If you need to randomly place points: RANDOM = True
     QUANUTY - the number of points that click on the screen, use ven RANDOM=False
+    KOEF - line segment ratio, 1/1 as 1, 1/2 as 0.5
+    ITERATION - number of iterations
+    SPEED -speed of turtle
+
     '''
+    t.speed(SPEED)
 
     if RANDOM:
         make_points_random(t)
     else:
         make_points(t, QUANTITY)
-    add_point(t, TEMP_COORD)
+    add_point(t, TEMP_COORD, KOEF)
 
     # click to exit
     turtle.exitonclick()
