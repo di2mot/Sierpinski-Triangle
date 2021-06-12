@@ -12,6 +12,9 @@ Two input options are supported, actually three. In the first case, if the RANDO
 If you want to set it manually, you can either write it in the script body, indicate coordinates of points and add new points if necessary. 
 Or just click on the screen. Where you click, there will be points. To do this you need to set RANDOM = False.
 To set the number of entered points, change the QUANTITY variable.
+KOEF - line segment ratio, 1/1 as 1, 1/2 as 0.5
+ITERATION - number of iterations
+SPEED -speed of turtl
 
 ## License
 
