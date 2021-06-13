@@ -28,13 +28,13 @@ t.up()  # In order not to leave a mark
 t.ht()
 canvas = turtle.getcanvas()
 
-def make_points_random(t):
+def make_points_random(t, t_coord):
 
     #To set points random
     for POINT in COORDINATE:
         t.goto(POINT)
         t.dot(5, 'red')
-    t.goto(TEMP_COORD)
+    t.goto(t_coord)
     t.dot(5, 'yellow')
 
 
@@ -45,7 +45,7 @@ def make_points(t, QUANTITY):
         turtle.onscreenclick(clic)
         t.home()
 
-    t.goto(TEMP_COORD)
+    t.goto(t_coord)
     t.dot(5, 'yellow')
 
 def clic(x, y):
@@ -55,14 +55,14 @@ def clic(x, y):
     t.dot(10, 'red')
 
 
-def add_point(t, TEMP_COORD, KOEF):
+def add_point(t, t_coord, KOEF):
     '''
     Sets a new point between the old point and a random vertex of the triangle.
 
     Xm = Xa + k*Xb / 1 + k
     Ym = Ya + k*Xb / 1 + k
     '''
-    TEMP = TEMP_COORD
+    TEMP = t_coord
     for i in range(2000):
 
         # If the COORD list is empty, it will select COORDINATE
@@ -84,7 +84,7 @@ def add_point(t, TEMP_COORD, KOEF):
         turtle.title(f'number of points = {i}')
 
 
-def run(t, TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, SPEED=100):
+def run(t, t_coord=TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, speed=100):
     '''
     Function for starting script
 
@@ -92,20 +92,20 @@ def run(t, TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, SPEED=10
     QUANUTY - the number of points that click on the screen, use ven RANDOM=False
     KOEF - line segment ratio, 1/1 as 1, 1/2 as 0.5
     ITERATION - number of iterations
-    SPEED -speed of turtle
+    speed -speed of turtle
 
     '''
-    t.speed(SPEED)
+    t.speed(speed)
 
     if RANDOM:
-        make_points_random(t)
+        make_points_random(t, t_coord)
     else:
         make_points(t, QUANTITY)
-    add_point(t, TEMP_COORD, KOEF)
+    add_point(t, t_coord, KOEF)
 
     # click to exit
     turtle.exitonclick()
 
 
 if __name__ == '__main__':
-    run(t, TEMP_COORD)
+    run(t)
