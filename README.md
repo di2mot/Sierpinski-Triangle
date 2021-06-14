@@ -8,13 +8,16 @@
 
 
 How to use:
-Two input options are supported, actually three. In the first case, if the RANDOM variable = True, the points will be set automatically.
+Two input options are supported, actually three. In the first case, if the 'rand' variable = True, the points will be set automatically.
 If you want to set it manually, you can either write it in the script body, indicate coordinates of points and add new points if necessary. 
-Or just click on the screen. Where you click, there will be points. To do this you need to set RANDOM = False.
+Or just click on the screen. Where you click, there will be points. To do this you need to set 'rand' = False.
 To set the number of entered points, change the QUANTITY variable.
 KOEF - line segment ratio, 1/1 as 1, 1/2 as 0.5
 ITERATION - number of iterations
 SPEED -speed of turtl
+vision: If you don't want to see the points added, 
+        use the False flag. With the False flag, 
+        the rendering is almost instantaneous.
 
 ## License
 
