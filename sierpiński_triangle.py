@@ -18,14 +18,12 @@ COORDINATE = (A, B, C)
 COORD = []
 
 # first point
-TEMP_COORD = [randint(0, 200), randint(0, 200)]
-
-
+TEMP_COORD = (randint(0, 200), randint(0, 200))
 
 
 def make_points_random(t, t_coord):
 
-    #To set points random
+    # To set points random
     for POINT in COORDINATE:
         t.goto(POINT)
         t.dot(5, 'red')
@@ -35,13 +33,14 @@ def make_points_random(t, t_coord):
 
 def make_points(t, QUANTITY):
 
-    #To set points manually
+    # To set points manually
     while len(COORD) < QUANTITY:
         turtle.onscreenclick(clic)
         t.home()
 
     t.goto(t_coord)
     t.dot(5, 'yellow')
+
 
 def clic(x, y):
     COORD.append([x, y])
@@ -79,10 +78,15 @@ def add_point(t, t_coord, KOEF):
         turtle.title(f'number of points = {i}')
 
 
-def run(t_coord=TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, speed=100):
+def run(t_coord: tuple = TEMP_COORD,
+        RANDOM: bool = True,
+        QUANTITY: int = 3,
+        KOEF: int = 1,
+        ITERATION: int = 2000,
+        speed: int = 100):
     '''
     Function for starting script
-
+    t_coord - coordinate of the first dot, (x, y)
     If you need to randomly place points: RANDOM = True
     QUANUTY - the number of points that click on the screen, use ven RANDOM=False
     KOEF - line segment ratio, 1/1 as 1, 1/2 as 0.5
