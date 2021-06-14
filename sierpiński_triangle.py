@@ -21,12 +21,7 @@ COORD = []
 TEMP_COORD = [randint(0, 200), randint(0, 200)]
 
 
-# Main script
-t = turtle.Turtle()
 
-t.up()  # In order not to leave a mark
-t.ht()
-canvas = turtle.getcanvas()
 
 def make_points_random(t, t_coord):
 
@@ -84,7 +79,7 @@ def add_point(t, t_coord, KOEF):
         turtle.title(f'number of points = {i}')
 
 
-def run(t, t_coord=TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, speed=100):
+def run(t_coord=TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, speed=100):
     '''
     Function for starting script
 
@@ -95,6 +90,12 @@ def run(t, t_coord=TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, 
     speed -speed of turtle
 
     '''
+    # Main script
+    t = turtle.Turtle()
+
+    t.up()  # In order not to leave a mark
+    t.ht()
+    canvas = turtle.getcanvas()
     t.speed(speed)
 
     if RANDOM:
@@ -108,4 +109,4 @@ def run(t, t_coord=TEMP_COORD, RANDOM=True, QUANTITY=3, KOEF=1, ITERATION=2000, 
 
 
 if __name__ == '__main__':
-    run(t)
+    run()
