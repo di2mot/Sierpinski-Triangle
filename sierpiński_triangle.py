@@ -1,4 +1,5 @@
 import turtle
+import tkinter
 from random import choice, randint
 
 
@@ -56,6 +57,7 @@ def add_point(t, t_coord, KOEF):
     Xm = Xa + k*Xb / 1 + k
     Ym = Ya + k*Xb / 1 + k
     '''
+
     TEMP = t_coord
     for i in range(2000):
 
@@ -83,7 +85,8 @@ def run(t_coord: tuple = TEMP_COORD,
         QUANTITY: int = 3,
         KOEF: int = 1,
         ITERATION: int = 2000,
-        speed: int = 100):
+        speed: int = 100,
+        vision: bool = 0):
     '''
     Function for starting script
     t_coord - coordinate of the first dot, (x, y)
@@ -98,15 +101,24 @@ def run(t_coord: tuple = TEMP_COORD,
     t = turtle.Turtle()
 
     t.up()  # In order not to leave a mark
-    t.ht()
+    t.ht()  # make turtle invisibl
     canvas = turtle.getcanvas()
     t.speed(speed)
+
+    if vision:
+        turtle.tracer(0, 0)
 
     if RANDOM:
         make_points_random(t, t_coord)
     else:
         make_points(t, QUANTITY)
-    add_point(t, t_coord, KOEF)
+    try:
+        add_point(t, t_coord, KOEF)
+    except turtle.Terminator:
+        exit()
+    except _tkinter.TclError:
+        exit()
+    turtle.update()
 
     # click to exit
     turtle.exitonclick()
