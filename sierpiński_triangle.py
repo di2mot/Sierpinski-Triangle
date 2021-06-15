@@ -32,10 +32,10 @@ def make_points_random(t, t_coord):
     t.dot(5, 'yellow')
 
 
-def make_points(t, QUANTITY):
+def make_points(t, quanity):
 
     # To set points manually
-    while len(COORD) < QUANTITY:
+    while len(COORD) < quanity:
         turtle.onscreenclick(clic)
         t.home()
 
@@ -81,20 +81,24 @@ def add_point(t, t_coord, KOEF):
 
 
 def run(t_coord: tuple = TEMP_COORD,
-        RANDOM: bool = True,
-        QUANTITY: int = 3,
+        rand: bool = True,
+        quanity: int = 3,
         KOEF: int = 1,
-        ITERATION: int = 2000,
+        iterations: int = 2000,
         speed: int = 100,
         vision: bool = 0):
     '''
     Function for starting script
-    t_coord - coordinate of the first dot, (x, y)
-    If you need to randomly place points: RANDOM = True
-    QUANUTY - the number of points that click on the screen, use ven RANDOM=False
-    KOEF - line segment ratio, 1/1 as 1, 1/2 as 0.5
-    ITERATION - number of iterations
-    speed -speed of turtle
+
+    t_coord:  coordinate of the first dot, (x, y)
+    rand: If you need to randomly place points: rand = True
+    quanity:  the number of points that click on the screen, use ven rand=False
+    KOEF:  line segment ratio, 1/1 as 1, 1/2 as 0.5
+    iterations:  number of iterationss
+    speed: speed of turtle
+    vision: If you don't want to see the points added, 
+            use the False flag. With the False flag, 
+            the rendering is almost instantaneous.
 
     '''
     # Main script
@@ -108,16 +112,20 @@ def run(t_coord: tuple = TEMP_COORD,
     if vision:
         turtle.tracer(0, 0)
 
-    if RANDOM:
+    if rand:
         make_points_random(t, t_coord)
     else:
-        make_points(t, QUANTITY)
+        make_points(t, quanity)
+
+    # it`s add point
+    # and for closing th window
     try:
         add_point(t, t_coord, KOEF)
     except turtle.Terminator:
-        exit()
+        print('You have closed the window by forcibly stopping')
     except _tkinter.TclError:
-        exit()
+        print('You have closed the window by forcibly stopping')
+
     turtle.update()
 
     # click to exit
