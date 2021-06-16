@@ -5,13 +5,13 @@ How it run:
 ```python
 from sierpinski_triangle import build
 
-build(t_coord: tuple = TEMP_COORD,
+build(first_dot: tuple = first_dot,
         rand: bool = True,
         quanity: int = 3,
         koef: int = 1,
         iterations: int = 2000,
         speed: int = 100,
-        vision: bool = 0)
+        vision: bool = True)
 ```
 
 
@@ -26,13 +26,17 @@ Two input options are supported, actually three. In the first case, if the 'rand
 If you want to set it manually, you can either write it in the script body, indicate coordinates of points and add new points if necessary. 
 Or just click on the screen. Where you click, there will be points. To do this you need to set 'rand' = False.
 To set the number of entered points, change the QUANTITY variable.
-KOEF - line segment ratio, 1/1 as 1, 1/2 as 0.5
-ITERATIONS - number of iterations
-SPEED -speed of turtl
-vision: If you don't want to see the points added, 
-        use the False flag. With the False flag, 
-        the rendering is almost instantaneous.
 
+```    first_dot:  coordinate of the first dot, (x, y)
+    rand: If you need to randomly place points: rand = True
+    quanity:  the number of points that click on the screen, use ven rand=False
+    koef:  line segment ratio, 1/1 as 1, 1/2 as 0.5
+    iterations:  number of iterationss
+    speed: speed of turtle
+    vision: If you don't want to see the points added, 
+            use the False flag. With the False flag, 
+            the rendering is almost instantaneous.
+```
 ## License
 
 WTFPL Version 2
