@@ -2,7 +2,7 @@
 ## _A simple implementation of Sierpinski's triangle in Python and the turtle module with random figure generation_
 
 How it run:
-
+`` ''
 from sierpinski_triangle import build
 
 build(t_coord: tuple = TEMP_COORD,
@@ -12,7 +12,7 @@ build(t_coord: tuple = TEMP_COORD,
         iterations: int = 2000,
         speed: int = 100,
         vision: bool = 0)
-
+`` ''
 ![N|Solid](https://raw.githubusercontent.com/di2mot/Sierpinski-Triangle/main/sierpinski_triangle.png)
 
 
