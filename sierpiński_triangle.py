@@ -50,7 +50,7 @@ def clic(x, y):
     t.dot(10, 'red')
 
 
-def add_point(t, t_coord, KOEF):
+def add_point(t, t_coord, koef):
     '''
     Sets a new point between the old point and a random vertex of the triangle.
 
@@ -68,8 +68,8 @@ def add_point(t, t_coord, KOEF):
         else:
             ABC = choice(COORDINATE)
 
-        NEW_X = (TEMP[0] + KOEF * ABC[0]) / (1 + KOEF)
-        NEW_Y = (TEMP[1] + KOEF * ABC[1]) / (1 + KOEF)
+        NEW_X = (TEMP[0] + koef * ABC[0]) / (1 + koef)
+        NEW_Y = (TEMP[1] + koef * ABC[1]) / (1 + koef)
 
         TEMP = [NEW_X, NEW_Y]
 
@@ -83,7 +83,7 @@ def add_point(t, t_coord, KOEF):
 def run(t_coord: tuple = TEMP_COORD,
         rand: bool = True,
         quanity: int = 3,
-        KOEF: int = 1,
+        koef: int = 1,
         iterations: int = 2000,
         speed: int = 100,
         vision: bool = 0):
@@ -93,7 +93,7 @@ def run(t_coord: tuple = TEMP_COORD,
     t_coord:  coordinate of the first dot, (x, y)
     rand: If you need to randomly place points: rand = True
     quanity:  the number of points that click on the screen, use ven rand=False
-    KOEF:  line segment ratio, 1/1 as 1, 1/2 as 0.5
+    koef:  line segment ratio, 1/1 as 1, 1/2 as 0.5
     iterations:  number of iterationss
     speed: speed of turtle
     vision: If you don't want to see the points added, 
@@ -120,7 +120,7 @@ def run(t_coord: tuple = TEMP_COORD,
     # it`s add point
     # and for closing th window
     try:
-        add_point(t, t_coord, KOEF)
+        add_point(t, t_coord, koef)
     except turtle.Terminator:
         print('You have closed the window by forcibly stopping')
     except _tkinter.TclError:
