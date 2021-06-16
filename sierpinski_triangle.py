@@ -1,5 +1,5 @@
 import turtle
-import tkinter
+from tkinter import _tkinter
 from random import choice, randint
 
 
@@ -19,16 +19,16 @@ COORDINATE = (A, B, C)
 COORD = []
 
 # first point
-TEMP_COORD = (randint(0, 200), randint(0, 200))
+first_dot = (randint(0, 200), randint(0, 200))
 
 
-def make_points_random(t, t_coord):
+def make_points_random(t, first_dot):
 
     # To set points random
     for POINT in COORDINATE:
         t.goto(POINT)
         t.dot(5, 'red')
-    t.goto(t_coord)
+    t.goto(first_dot)
     t.dot(5, 'yellow')
 
 
@@ -39,7 +39,7 @@ def make_points(t, quanity):
         turtle.onscreenclick(clic)
         t.home()
 
-    t.goto(t_coord)
+    t.goto(first_dot)
     t.dot(5, 'yellow')
 
 
@@ -50,7 +50,7 @@ def clic(x, y):
     t.dot(10, 'red')
 
 
-def add_point(t, t_coord, koef):
+def add_point(t, first_dot, koef):
     '''
     Sets a new point between the old point and a random vertex of the triangle.
 
@@ -58,7 +58,7 @@ def add_point(t, t_coord, koef):
     Ym = Ya + k*Xb / 1 + k
     '''
 
-    TEMP = t_coord
+    TEMP = first_dot
     for i in range(2000):
 
         # If the COORD list is empty, it will select COORDINATE
@@ -80,17 +80,17 @@ def add_point(t, t_coord, koef):
         turtle.title(f'number of points = {i}')
 
 
-def build(t_coord: tuple = TEMP_COORD,
+def build(first_dot: tuple = first_dot,
         rand: bool = True,
         quanity: int = 3,
         koef: int = 1,
         iterations: int = 2000,
         speed: int = 100,
-        vision: bool = 0):
+        vision: bool = True):
     '''
     Function for starting script
 
-    t_coord:  coordinate of the first dot, (x, y)
+    first_dot:  coordinate of the first dot, (x, y)
     rand: If you need to randomly place points: rand = True
     quanity:  the number of points that click on the screen, use ven rand=False
     koef:  line segment ratio, 1/1 as 1, 1/2 as 0.5
@@ -109,18 +109,18 @@ def build(t_coord: tuple = TEMP_COORD,
     canvas = turtle.getcanvas()
     t.speed(speed)
 
-    if vision:
+    if not vision:
         turtle.tracer(0, 0)
 
     if rand:
-        make_points_random(t, t_coord)
+        make_points_random(t, first_dot)
     else:
         make_points(t, quanity)
 
     # it`s add point
     # and for closing th window
     try:
-        add_point(t, t_coord, koef)
+        add_point(t, first_dot, koef)
     except turtle.Terminator:
         print('You have closed the window by forcibly stopping')
     except _tkinter.TclError:
