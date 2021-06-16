@@ -80,7 +80,7 @@ def add_point(t, t_coord, koef):
         turtle.title(f'number of points = {i}')
 
 
-def run(t_coord: tuple = TEMP_COORD,
+def build(t_coord: tuple = TEMP_COORD,
         rand: bool = True,
         quanity: int = 3,
         koef: int = 1,
@@ -133,4 +133,4 @@ def run(t_coord: tuple = TEMP_COORD,
 
 
 if __name__ == '__main__':
-    run()
+    build()
