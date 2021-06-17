@@ -21,6 +21,8 @@ COORD = []
 # first point
 first_dot = (randint(0, 200), randint(0, 200))
 
+exit_text = 'Premature program closure'
+errore_text = "Something's gone wrong."
 
 def make_points_random(t, first_dot):
 
@@ -81,12 +83,12 @@ def add_point(t, first_dot, koef):
 
 
 def build(first_dot: tuple = first_dot,
-        rand: bool = True,
-        quanity: int = 3,
-        koef: int = 1,
-        iterations: int = 2000,
-        speed: int = 100,
-        vision: bool = True):
+          rand: bool = True,
+          quanity: int = 3,
+          koef: int = 1,
+          iterations: int = 2000,
+          speed: int = 100,
+          vision: bool = True):
     '''
     Function for starting script
 
@@ -121,16 +123,16 @@ def build(first_dot: tuple = first_dot,
     # and for closing th window
     try:
         add_point(t, first_dot, koef)
+        turtle.update()
+        # click to exit
+        turtle.exitonclick()
+
     except turtle.Terminator:
-        print('You have closed the window by forcibly stopping')
+        print(exit_text)
     except _tkinter.TclError:
-        print('You have closed the window by forcibly stopping')
-
-    turtle.update()
-
-    # click to exit
-    turtle.exitonclick()
-
+        print(exit_text)
+    except Exception as errore:
+        print(errore_text, errore)
 
 if __name__ == '__main__':
     build()
