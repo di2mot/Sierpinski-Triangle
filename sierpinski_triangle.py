@@ -21,7 +21,7 @@ COORD = []
 # first point
 first_dot = (randint(0, 200), randint(0, 200))
 
-exit_text = 'Premature program closure'
+exit_text = 'Premature program close'
 errore_text = "Something's gone wrong."
 
 def make_points_random(t, first_dot):
