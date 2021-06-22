@@ -42,7 +42,7 @@ def make_points(t, quanity):
         t.home()
 
     t.goto(first_dot)
-    t.dot(5, 'yellow')
+    t.dot(5, poit_color)
 
 
 def clic(x, y):
@@ -76,7 +76,7 @@ def add_point(t, first_dot, koef):
         TEMP = [NEW_X, NEW_Y]
 
         t.goto(NEW_X, NEW_Y)
-        t.dot(3)
+        t.dot(3, dot_color)
 
         # Updates the point counter in the header
         turtle.title(f'number of points = {i}')
@@ -88,7 +88,9 @@ def build(first_dot: tuple = first_dot,
           koef: int = 1,
           iterations: int = 2000,
           speed: int = 100,
-          vision: bool = True):
+          vision: bool = True,
+          dot_color: str = 'black',
+          poit_color: str = 'yellow'):
     '''
     Function for starting script
 
