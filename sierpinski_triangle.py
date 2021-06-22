@@ -52,7 +52,7 @@ def clic(x, y):
     t.dot(10, 'red')
 
 
-def add_point(t, first_dot, koef):
+def add_point(t, first_dot, koef, iterations, dot_color, vision):
     '''
     Sets a new point between the old point and a random vertex of the triangle.
 
@@ -61,7 +61,7 @@ def add_point(t, first_dot, koef):
     '''
 
     TEMP = first_dot
-    for i in range(2000):
+    for i in range(iterations):
 
         # If the COORD list is empty, it will select COORDINATE
         if len(COORD) != 0:
@@ -76,10 +76,11 @@ def add_point(t, first_dot, koef):
         TEMP = [NEW_X, NEW_Y]
 
         t.goto(NEW_X, NEW_Y)
-        t.dot(3, dot_color)
+        t.dot(3)
 
         # Updates the point counter in the header
-        turtle.title(f'number of points = {i}')
+        if vision:
+            turtle.title(f'number of points = {i}')
 
 
 def build(first_dot: tuple = first_dot,
@@ -90,7 +91,7 @@ def build(first_dot: tuple = first_dot,
           speed: int = 100,
           vision: bool = True,
           dot_color: str = 'black',
-          poit_color: str = 'yellow'):
+          point_color: str = 'yellow'):
     '''
     Function for starting script
 
@@ -124,7 +125,7 @@ def build(first_dot: tuple = first_dot,
     # it`s add point
     # and for closing th window
     try:
-        add_point(t, first_dot, koef)
+        add_point(t, first_dot, koef, iterations, dot_color, vision)
         turtle.update()
         # click to exit
         turtle.exitonclick()
