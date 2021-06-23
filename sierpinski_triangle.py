@@ -60,6 +60,9 @@ def add_point(t, first_dot, koef, iterations, dot_color, vision):
     Ym = Ya + k*Xb / 1 + k
     '''
 
+    if not vision:
+        turtle.title(f'number of points = {iterations}')
+
     TEMP = first_dot
     for i in range(iterations):
 
