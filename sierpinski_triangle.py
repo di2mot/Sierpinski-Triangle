@@ -31,25 +31,27 @@ def make_points_random(t, first_dot):
         t.goto(POINT)
         t.dot(5, 'red')
     t.goto(first_dot)
-    t.dot(5, 'yellow')
+    t.dot(5, point_color)
 
 
-def make_points(t, quanity):
+def make_points(t, quanity, point_color):
 
     # To set points manually
     while len(COORD) < quanity:
-        turtle.onscreenclick(clic)
+        print(turtle.onscreenclick(clic))
         t.home()
+        print(COORD)
+    for i in COORD:
+        t.up()
+        t.goto(i[0], i[1])
+        t.dot(10, 'red')
 
     t.goto(first_dot)
-    t.dot(5, poit_color)
+    t.dot(5, point_color)
 
 
 def clic(x, y):
     COORD.append([x, y])
-    t.up()
-    t.goto(x, y)
-    t.dot(10, 'red')
 
 
 def add_point(t, first_dot, koef, iterations, dot_color, vision):
@@ -62,6 +64,7 @@ def add_point(t, first_dot, koef, iterations, dot_color, vision):
 
     if not vision:
         turtle.title(f'number of points = {iterations}')
+        turtle.tracer(0, 0)
 
     TEMP = first_dot
     for i in range(iterations):
@@ -117,13 +120,13 @@ def build(first_dot: tuple = first_dot,
     canvas = turtle.getcanvas()
     t.speed(speed)
 
-    if not vision:
-        turtle.tracer(0, 0)
+    #if not vision:
+        #turtle.tracer(0, 0)
 
     if rand:
         make_points_random(t, first_dot)
     else:
-        make_points(t, quanity)
+        make_points(t, quanity, point_color)
 
     # it`s add point
     # and for closing th window
@@ -133,8 +136,8 @@ def build(first_dot: tuple = first_dot,
         # click to exit
         turtle.exitonclick()
 
-    except turtle.Terminator:
-        print(exit_text)
+    except turtle.Terminator as errore:
+        print(exit_text, errore)
     except _tkinter.TclError:
         print(exit_text)
     except Exception as errore:
