@@ -6,15 +6,11 @@ from random import choice, randint
 # CONSTANTS:
 
 # A = (x, y)
-# To set the triangle placement range. Can be set manually
-A = (randint(-350, 350), randint(100, 350))
 
-B = (randint(-350, 100), randint(-350, 100))
 
-C = (randint(100, 350), randint(-350, 100))
 
 # If you write the coordinates manually, add them to this list
-COORDINATE = (A, B, C)
+COORDINATE = []
 
 COORD = []
 
@@ -24,23 +20,26 @@ first_dot = (randint(0, 200), randint(0, 200))
 exit_text = 'Premature program close'
 errore_text = "Something's gone wrong."
 
-def make_points_random(t, first_dot):
+def make_points_random(t, quanity, first_dot):
+    # generate points
+    for i in range(quanity):
+        COORDINATE.append((randint(-350, 350), randint(100, 350)))
 
     # To set points random
     for POINT in COORDINATE:
         t.goto(POINT)
         t.dot(5, 'red')
     t.goto(first_dot)
-    t.dot(5, point_color)
+    t.dot(5, 'yellow')
 
 
 def make_points(t, quanity, point_color):
 
     # To set points manually
     while len(COORD) < quanity:
-        print(turtle.onscreenclick(clic))
+        turtle.onscreenclick(clic)
         t.home()
-        print(COORD)
+
     for i in COORD:
         t.up()
         t.goto(i[0], i[1])
@@ -82,7 +81,7 @@ def add_point(t, first_dot, koef, iterations, dot_color, vision):
         TEMP = [NEW_X, NEW_Y]
 
         t.goto(NEW_X, NEW_Y)
-        t.dot(3)
+        t.dot(3, dot_color)
 
         # Updates the point counter in the header
         if vision:
@@ -124,7 +123,7 @@ def build(first_dot: tuple = first_dot,
         #turtle.tracer(0, 0)
 
     if rand:
-        make_points_random(t, first_dot)
+        make_points_random(t, quanity, first_dot)
     else:
         make_points(t, quanity, point_color)
 
