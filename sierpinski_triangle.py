@@ -20,7 +20,7 @@ first_dot = (randint(0, 200), randint(0, 200))
 exit_text = 'Premature program close'
 errore_text = "Something's gone wrong."
 
-def make_points_random(t, quanity, first_dot):
+def make_points_random(t, quanity, first_dot, point_color):
     # generate points
     for i in range(quanity):
         COORDINATE.append((randint(-350, 350), randint(100, 350)))
