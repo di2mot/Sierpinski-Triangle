@@ -30,7 +30,7 @@ def make_points_random(t, quanity, first_dot, point_color):
         t.goto(POINT)
         t.dot(5, 'red')
     t.goto(first_dot)
-    t.dot(5, 'yellow')
+    t.dot(5, point_color)
 
 
 def make_points(t, quanity, point_color):
@@ -109,7 +109,8 @@ def build(first_dot: tuple = first_dot,
     vision: If you don't want to see the points added, 
             use the False flag. With the False flag, 
             the rendering is almost instantaneous.
-
+    point_color: peak color 
+    dot_color: fill colour
     '''
     # Main script
     t = turtle.Turtle()
@@ -123,7 +124,7 @@ def build(first_dot: tuple = first_dot,
         #turtle.tracer(0, 0)
 
     if rand:
-        make_points_random(t, quanity, first_dot)
+        make_points_random(t, quanity, first_dot, point_color)
     else:
         make_points(t, quanity, point_color)
 
