@@ -36,6 +36,8 @@ To set the number of entered points, change the QUANTITY variable.
     vision: If you don't want to see the points added, 
             use the False flag. With the False flag, 
             the rendering is almost instantaneous.
+    point_color: peak color 
+    dot_color: fill colour
 ```
 ## License
 
